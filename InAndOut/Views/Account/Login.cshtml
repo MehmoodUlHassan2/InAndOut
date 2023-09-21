@@ -1,0 +1,88 @@
+﻿@using InAndOut.Models
+@model AuthViewModel
+
+
+@{
+    Layout = null;
+}
+<link href="~/css/login.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<div class="row">
+    <div class="col-md-6 mx-auto p-0">
+        <div class="card">
+            <div class="login-box">
+                <div class="login-snip">
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                @*    <input id="tab-3" type="radio" name="tab" class="forget"><label for="tab-3" class="tab">Forget</label>*@
+                    <div class="login-space">
+                       
+
+                        <div class="login">
+                            <form asp-action="Login" asp-controller="Account" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="group">
+                                    <label for="user" class="label">Username</label>
+                                    <input asp-for="LoginModel.UserName" id="user" type="text" class="input" autocomplete="off" placeholder="Enter your username">
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">Password</label>
+                                    <input asp-for="LoginModel.Password" id="pass" type="password" autocomplete="off" class="input" data-type="password" placeholder="Enter your password">
+                                </div>
+                                <div class="group">
+                                    <input asp-for="LoginModel.RememberMe" id="check" type="checkbox" class="check" checked>
+                                    <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="button" value="Sign In">
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot">
+                                    <a  asp-action="ForgetPassword" asp-controller="Account">Forgot Password?</a>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="sign-up-form">
+                            <form asp-action="Registration" asp-controller="Account">
+                                <div class="group">
+                                    <label for="user" class="label">user name</label>
+                                    <input type="text" asp-for="UserRegistrationModel.UserName" autocomplete="off" class="input" placeholder="create your username">
+                                </div>
+                                <div class="group">
+                                    <label class="label">email address</label>
+                                    <input type="email" asp-for="UserRegistrationModel.Email" class="input" placeholder="enter your email address">
+                                </div>
+                                <div class="group">
+                                    <label asp-for="UserRegistrationModel.Password" class="label">password</label>
+                                    <input type="password" asp-for="UserRegistrationModel.Password" autocomplete="off" class="input" data-type="password" placeholder="create your password">
+                                </div>
+                                <div class="group">
+                                    <label class="label">Phone Number</label>
+                                    <input type="text" asp-for="UserRegistrationModel.PhoneNumber" class="input" placeholder="enter phone number">
+                                </div>
+
+                                <div class="group">
+                                    <input type="submit" class="button" value="Sign Up">
+                                </div>
+                                <div class="hr"></div>
+
+                            </form>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

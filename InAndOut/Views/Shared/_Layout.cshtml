@@ -28,6 +28,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Expense" asp-action="Index">My Expenses</a>
                         </li>
+                       @* @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark " asp-area="" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+                            </li>
+                        }*@
+
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li class="nav-item text-right">
+                            <a class="nav-link text-dark " asp-area="" asp-controller="Account" asp-action="SignOut">Sign Out</a>
+                        </li>
+                        }
                     </ul>
                 </div>
             </div>

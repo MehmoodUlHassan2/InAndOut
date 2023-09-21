@@ -5,7 +5,9 @@ namespace InAndOut.Models
 {
     public class Item
     {
-        [Key]
+		public string? UserId { get; set; }
+
+		[Key]
         public int id { get; set; }
         [Required]
         public string Borrower { get; set; }

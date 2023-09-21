@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace InAndOut.Controllers
 {
+    [Authorize]
     public class ItemController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -14,7 +17,8 @@ namespace InAndOut.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Item> objList = _db.Items;
+			var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+			IEnumerable<Item> objList = _db.Items.Where(x => x.UserId == userId).ToList();
             return View(objList);
         }
 
@@ -31,7 +35,9 @@ namespace InAndOut.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Items.Add(obj);
+				var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+				obj.UserId = userId;
+				_db.Items.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -60,8 +66,9 @@ namespace InAndOut.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
+           var userid =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            var obj = _db.Items.Find(id);
+            var obj = _db.Items.FirstOrDefault(x => x.id == id && x.UserId == userid);
 
             if (obj == null)
             {
@@ -96,7 +103,9 @@ namespace InAndOut.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Items.Update(obj);
+				var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+				obj.UserId = userId;
+				_db.Items.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }

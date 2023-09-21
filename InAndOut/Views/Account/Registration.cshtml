@@ -1,0 +1,64 @@
+﻿@*@model UserRegistrationModel
+
+@{
+	Layout = null;
+}
+<link href="~/css/login.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<div class="sign-up-form">
+	<form asp-action="Rgistration" asp-controller="Account">
+		<div class="group">
+			<label class="label">User Name</label>
+			<input type="text" asp-for="UserName" placeholder="create your username">
+		</div>
+		<div class="group">
+			<label class="label">Email address</label>
+			<input type="email" asp-for="Email" class="input" placeholder="enter your email address">
+		</div>
+		<div class="group">
+			<label asp-for="Password" class="label">password</label>
+			<input type="password" asp-for="Password" class="input" data-type="password" placeholder="Create your password">
+		</div>
+		<div class="group">
+			<label class="label">Phone Number</label>
+			<input type="text" asp-for="PhoneNumber" placeholder="Enter Phone Number">
+		</div>
+
+		<div class="group">
+			<button type="submit" class="btn btn-primary">sign up</button>
+		</div>
+		<div class="hr"></div>
+		<div class="foot">
+			<label for="tab-1">already member?</label>
+		</div>
+		<
+	</form>
+</div>
+
+
+@*<h1>Registration</h1>
+<form asp-action="Registration" asp-controller="Account">
+<div class="row">
+    <div class="col-md-4 form-group" >
+        <label>User Name </label>
+        <input type="text" asp-for="UserName" class="form-control" />
+    </div>
+    <div class="col-md-4 form-group">
+        <label>Email </label>
+        <input type="email" asp-for="Email" class="form-control" />
+    </div>
+    <div class="col-md-4 form-group">
+        <label>Phone Number</label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <div class="col-md-4 form-group">
+        <label>Password</label>
+        <input type="password" asp-for="Password" class="form-control" />
+    </div>
+    <div class="col-md-4 form-group">
+     <input type="submit" value="submit" class="btn btn-primary" />
+    </div>
+</div>
+</form>*@
